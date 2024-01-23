@@ -1,4 +1,6 @@
+--extra-index-url=${PIP_EXTRA_INDEX_URL}
 # Framework para el servidor web ASGI
+
 uvicorn>=0.20.0,<0.30.0
 
 # Framework web rápido
