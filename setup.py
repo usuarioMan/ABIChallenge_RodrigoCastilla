@@ -5,23 +5,17 @@ from pathlib import Path
 
 from setuptools import find_packages, setup
 
-# Package meta-data.
-NAME = 'tid-regression-model'
-DESCRIPTION = "Example regression model package from Train In Data."
-URL = "https://github.com/trainindata/testing-and-monitoring-ml-deployments"
-EMAIL = "christopher.samiullah@protonmail.com"
-AUTHOR = "ChristopherGS"
-REQUIRES_PYTHON = ">=3.7.0"
+# Metadatos del paquete.
+NOMBRE = 'tid-regression-model'
+DESCRIPCION = "Ejemplo de paquete de modelo de regresión"
+EMAIL = "castilla.ar@gmail.com"
+AUTOR = "Rodrigo Castilla"
+REQUIERE_PYTHON = ">=3.7.0"
 
+# La descripción larga se establece igual a la descripción corta en este caso.
+descripcion_larga = DESCRIPCION
 
-# The rest you shouldn't have to touch too much :)
-# ------------------------------------------------
-# Except, perhaps the License and Trove Classifiers!
-# If you do change the License, remember to change the
-# Trove Classifier for that!
-long_description = DESCRIPTION
-
-# Load the package's VERSION file as a dictionary.
+# Cargar el archivo VERSION del paquete como un diccionario.
 about = {}
 ROOT_DIR = Path(__file__).resolve().parent
 REQUIREMENTS_DIR = ROOT_DIR / 'requirements'
@@ -30,23 +24,21 @@ with open(PACKAGE_DIR / "VERSION") as f:
     _version = f.read().strip()
     about["__version__"] = _version
 
-
-# What packages are required for this module to be executed?
+# Función para listar los requisitos del módulo.
 def list_reqs(fname="requirements.txt"):
     with open(REQUIREMENTS_DIR / fname) as fd:
         return fd.read().splitlines()
 
-# Where the magic happens:
+# Configuración del paquete:
 setup(
-    name=NAME,
+    name=NOMBRE,
     version=about["__version__"],
-    description=DESCRIPTION,
-    long_description=long_description,
+    description=DESCRIPCION,
+    long_description=descripcion_larga,
     long_description_content_type="text/markdown",
-    author=AUTHOR,
+    author=AUTOR,
     author_email=EMAIL,
-    python_requires=REQUIRES_PYTHON,
-    url=URL,
+    python_requires=REQUIERE_PYTHON,
     packages=find_packages(exclude=("tests",)),
     package_data={"regression_model": ["VERSION"]},
     install_requires=list_reqs(),
@@ -54,8 +46,8 @@ setup(
     include_package_data=True,
     license="BSD-3",
     classifiers=[
-        # Trove classifiers
-        # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
+        # Clasificadores Trove
+        # Lista completa: https://pypi.python.org/pypi?%3Aaction=list_classifiers
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
