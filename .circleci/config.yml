@@ -163,6 +163,7 @@ workflows:
                 - main
                 - dev
                 
+      # Corrección de la indentación para que esté al mismo nivel que los otros trabajos.
       - sonarcloud_scan:
           requires:
             - test_app
