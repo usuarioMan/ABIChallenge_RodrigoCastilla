@@ -14,9 +14,10 @@ from app.main import app
 def test_data() -> pd.DataFrame:
     return load_dataset(file_name=config.app_config.test_data_file)
 
+
 # Fixture para inicializar el cliente de prueba
 @pytest.fixture()
 def client() -> Generator:
     with TestClient(app) as _client:
         yield _client
-        app.dependency_overrides = {}  # Restablecer las dependencias después de cada prueba
+        app.dependency_overrides = {}  # Restablecer las dependencias
