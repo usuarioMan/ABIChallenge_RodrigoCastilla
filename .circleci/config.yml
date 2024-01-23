@@ -147,8 +147,10 @@ workflows:
           <<: *tags_only
 
       - deploy_app_container_via_railway:
-          filters:
-            branches:
-              only:
-                - main
-                - dev
+        requires:
+          - test_app
+        filters:
+          branches:
+            only:
+              - main
+              - dev
