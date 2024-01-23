@@ -7,6 +7,7 @@ from loguru import logger
 
 from app.api import api_router
 from app.config import settings, setup_app_logging
+from database.mongo_singleton import ConexionMongoDB
 
 # Configurar el registro tan pronto como sea posible
 setup_app_logging(config=settings)
@@ -15,6 +16,17 @@ setup_app_logging(config=settings)
 app = FastAPI(
     title=settings.PROJECT_NAME, openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
+
+
+@app.on_event("startup")
+async def startup_db_client():
+    try:
+        logger.info("Iniciando conexion a la base de datos")
+        ConexionMongoDB()
+        logger.info("Conexion exitosa a la base de datos")
+    except Exception as e:
+        logger.error(f"Error al conectar a la base de datos: {str(e)}")
+
 
 # Routers
 root_router = APIRouter()

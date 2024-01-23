@@ -11,6 +11,7 @@ from regression_model.predict import make_prediction
 
 from app import __version__, schemas
 from app.config import settings
+from database.crud import guardar_resultados
 
 # Crear un router para la API
 api_router = APIRouter()
@@ -50,5 +51,5 @@ async def predict(input_data: schemas.MultipleHouseDataInputs) -> Any:
         raise HTTPException(status_code=400, detail=json.loads(results["errors"]))
 
     logger.info(f"Resultados de la predicción: {results.get('predictions')}")
-
+    guardar_resultados([{"prediction_result": results["predictions"]}])
     return results
