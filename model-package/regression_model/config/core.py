@@ -18,6 +18,7 @@ class AppConfig(BaseModel):
     """
     Configuración a nivel de aplicación.
     """
+
     package_name: str
     training_data_file: str
     test_data_file: str
@@ -29,6 +30,7 @@ class ModelConfig(BaseModel):
     Toda la configuración relevante para el modelo,
     entrenamiento e ingeniería de características.
     """
+
     target: str
     variables_to_rename: Dict
     features: List[str]
@@ -55,6 +57,7 @@ class ModelConfig(BaseModel):
 
 class Config(BaseModel):
     """Objeto de configuración principal."""
+
     app_config: AppConfig
     model_config: ModelConfig
 
