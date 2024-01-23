@@ -133,14 +133,15 @@ workflows:
   deploy_pipeline:
     jobs:
       - test_app
-      - deploy_app_to_railway:
-          requires:
-            - test_app
-          filters:
-            branches:
-              only:
-                - main
-                - dev
+      # ESTA ES LA FORMA "tradicional de deployarlo pero ya tenemos la version dockerizada"
+      #       - deploy_app_to_railway:
+      #           requires:
+      #             - test_app
+      #           filters:
+      #             branches:
+      #               only:
+      #                 - main
+      #                 - dev
       # Subir después de que se crean las etiquetas en git
       - test_and_upload_regression_model:
           <<: *tags_only
