@@ -1,0 +1,8 @@
+# Herramientas de mantenimiento del repositorio
+black>=22.12.0,<23.0.0  # Formateador de código Python
+flake8>=6.0.0,<7.0.0  # Herramienta de análisis de código estático
+mypy>=0.991,<1.0.0  # Comprobador de tipos estáticos opcional para Python
+isort>=5.11.4,<6.0.0  # Herramienta para ordenar importaciones en archivos Python
+
+# Validación y configuración de datos en Python
+pydantic>=1.10.4,<1.12.0
