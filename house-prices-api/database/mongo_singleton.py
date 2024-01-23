@@ -1,5 +1,11 @@
 import pymongo
+import os
+from loguru import logger
+
+
 MONGODBURI="mongodb+srv://rocastillar:NZlTVSCyVKhS9Ecb@challengemlops.nsad6tz.mongodb.net"
+
+
 class ConexionMongoDB:
     _instancia = None
 
