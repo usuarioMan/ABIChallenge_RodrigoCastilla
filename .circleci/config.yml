@@ -1,7 +1,7 @@
 # =======CONFIGURACIONES GENERALES Y PREPARACION DE ENTORNO=======
 
 # Versión de la configuración de CircleCI
-version: "2.1"
+version: 2.1
 
 # Definición de esferas (orbs) para reutilización
 orbs:
