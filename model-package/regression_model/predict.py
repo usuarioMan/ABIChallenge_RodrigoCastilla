@@ -13,6 +13,7 @@ pipeline_file_name = f"{config.app_config.pipeline_save_file}{_version}.pkl"
 # Cargar el pipeline guardado
 _price_pipe = load_pipeline(file_name=pipeline_file_name)
 
+
 def make_prediction(
     *,
     input_data: t.Union[pd.DataFrame, dict],
@@ -30,7 +31,7 @@ def make_prediction(
             X=validated_data[config.model_config.features]
         )
         results = {
-            "predictions": [np.exp(pred) for pred in predictions],  # tipo: ignorar
+            "predictions": [np.exp(pred) for pred in predictions],  # type: ignore
             "version": _version,
             "errors": errors,
         }

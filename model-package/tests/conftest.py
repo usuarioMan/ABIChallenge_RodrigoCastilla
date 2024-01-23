@@ -3,6 +3,7 @@ import pytest
 from regression_model.config.core import config
 from regression_model.processing.data_manager import load_dataset
 
+
 @pytest.fixture()
 def sample_input_data():
     """Fixture para cargar datos de entrada de muestra."""

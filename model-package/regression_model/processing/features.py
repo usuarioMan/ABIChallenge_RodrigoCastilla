@@ -3,6 +3,7 @@ from typing import List
 import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
 
+
 class TemporalVariableTransformer(BaseEstimator, TransformerMixin):
     """Transformador de tiempo temporal transcurrido."""
 
@@ -27,6 +28,7 @@ class TemporalVariableTransformer(BaseEstimator, TransformerMixin):
             X[feature] = X[self.reference_variable] - X[feature]
 
         return X
+
 
 class Mapper(BaseEstimator, TransformerMixin):
     """Mapper de variables categóricas."""

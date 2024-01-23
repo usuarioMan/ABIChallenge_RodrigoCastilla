@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Dict, List, Sequence
+from typing import Dict, List, Optional, Sequence
 
 from pydantic import BaseModel
 from strictyaml import YAML, load
@@ -13,6 +13,7 @@ CONFIG_FILE_PATH = PACKAGE_ROOT / "config.yml"
 DATASET_DIR = PACKAGE_ROOT / "datasets"
 TRAINED_MODEL_DIR = PACKAGE_ROOT / "trained_models"
 
+
 class AppConfig(BaseModel):
     """
     Configuración a nivel de aplicación.
@@ -21,6 +22,7 @@ class AppConfig(BaseModel):
     training_data_file: str
     test_data_file: str
     pipeline_save_file: str
+
 
 class ModelConfig(BaseModel):
     """
@@ -50,10 +52,12 @@ class ModelConfig(BaseModel):
     garage_mappings: Dict[str, int]
     finish_mappings: Dict[str, int]
 
+
 class Config(BaseModel):
     """Objeto de configuración principal."""
     app_config: AppConfig
     model_config: ModelConfig
+
 
 def find_config_file() -> Path:
     """Localiza el archivo de configuración."""
@@ -61,7 +65,8 @@ def find_config_file() -> Path:
         return CONFIG_FILE_PATH
     raise Exception(f"Configuración no encontrada en {CONFIG_FILE_PATH!r}")
 
-def fetch_config_from_yaml(cfg_path: Path = None) -> YAML:
+
+def fetch_config_from_yaml(cfg_path: Optional[Path] = None) -> YAML:
     """Analiza YAML que contiene la configuración del paquete."""
 
     if not cfg_path:
@@ -72,6 +77,7 @@ def fetch_config_from_yaml(cfg_path: Path = None) -> YAML:
             parsed_config = load(conf_file.read())
             return parsed_config
     raise OSError(f"No se encontró el archivo de configuración en la ruta: {cfg_path}")
+
 
 def create_and_validate_config(parsed_config: YAML = None) -> Config:
     """Ejecuta la validación en los valores de configuración."""
@@ -85,5 +91,6 @@ def create_and_validate_config(parsed_config: YAML = None) -> Config:
     )
 
     return _config
+
 
 config = create_and_validate_config()
