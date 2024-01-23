@@ -87,3 +87,27 @@ jobs:
           name: Publish model to Gemfury
           command: |
             tox -e publish_model
+
+tags_only: &tags_only
+  filters:
+    branches:
+      ignore: /.*/
+    tags:
+      only: /^.*/
+
+workflows:
+  version: 2
+  deploy_pipeline:
+    jobs:
+      - test_app
+      - deploy_app_to_railway:
+          requires:
+            - test_app
+          filters:
+            branches:
+              only:
+                - master
+                - dev
+      # upload after git tags are created
+      - test_and_upload_regression_model:
+          <<: *tags_only
