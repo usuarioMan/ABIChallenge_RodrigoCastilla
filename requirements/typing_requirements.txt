@@ -1,0 +1,13 @@
+# Herramientas de mantenimiento del repositorio
+
+# Black para formateo de código consistente
+black>=22.12.0,<23.0.0
+
+# Flake8 para análisis estático del código
+flake8>=6.0.0,<7.0.0
+
+# Mypy para verificación estática de tipos
+mypy>=0.991,<1.0.0
+
+# Isort para ordenar las importaciones de manera consistente
+isort>=5.11.4,<6.0.0

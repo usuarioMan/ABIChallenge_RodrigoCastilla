@@ -1,0 +1,25 @@
+# Archivo de requisitos para las dependencias del proyecto
+
+# NumPy para operaciones numéricas eficientes
+numpy>=1.21.0,<2.0.0
+
+# Pandas para manipulación y análisis de datos
+pandas>=1.3.5,<2.0.0
+
+# Pydantic para validación de datos y configuraciones
+pydantic>=1.8.1,<2.0.0
+
+# scikit-learn para herramientas de aprendizaje automático
+scikit-learn>=1.1.3,<2.0.0
+
+# StrictYAML para análisis y validación estricta de archivos YAML
+strictyaml>=1.3.2,<2.0.0
+
+# Ruamel.yaml para manipulación avanzada de archivos YAML
+ruamel.yaml>=0.16.12,<1.0.0
+
+# Feature-engine para ingeniería de características
+feature-engine>=1.0.2,<1.6.0  # Cambios significativos en v1.6.0
+
+# Joblib para paralelización y almacenamiento en caché
+joblib>=1.0.1,<2.0.0
