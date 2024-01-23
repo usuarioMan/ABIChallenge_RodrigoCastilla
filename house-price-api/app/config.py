@@ -6,6 +6,7 @@ from typing import List, cast
 from loguru import logger
 from pydantic import AnyHttpUrl, BaseSettings
 
+
 # Configuración para el manejo de registros (logging)
 class LoggingSettings(BaseSettings):
     LOGGING_LEVEL: int = logging.INFO  # Los niveles de registro son de tipo int

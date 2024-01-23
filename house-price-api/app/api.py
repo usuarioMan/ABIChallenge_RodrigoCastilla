@@ -15,6 +15,7 @@ from app.config import settings
 # Crear un router para la API
 api_router = APIRouter()
 
+
 # Endpoint para verificar la salud de la aplicación
 @api_router.get("/health", response_model=schemas.Health, status_code=200)
 def health() -> dict:
@@ -26,6 +27,7 @@ def health() -> dict:
     )
 
     return health.dict()
+
 
 # Endpoint para realizar predicciones de precios de casas
 @api_router.post("/predict", response_model=schemas.PredictionResults, status_code=200)
