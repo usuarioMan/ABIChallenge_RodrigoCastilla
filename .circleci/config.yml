@@ -66,7 +66,7 @@ jobs:
       - run:
           name: Deploy to Railway App (You must set RAILWAY_TOKEN env var)
           command: |
-            cd house-prices-api && railway up --detach
+            cd house-prices-api && railway up --detach -s famed-board -e production
 
   # Trabajo para probar y cargar el modelo de regresión
   test_and_upload_regression_model:
