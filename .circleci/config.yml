@@ -89,6 +89,36 @@ jobs:
           command: |
             tox -e publish_model
 
+  # Este bloque define un trabajo de CircleCI llamado "deploy_app_container_via_railway".
+  deploy_app_container_via_railway:
+    # Utiliza un conjunto común de configuraciones predeterminadas mediante la técnica de anclaje (&defaults).
+    <<: *defaults
+    steps:
+      # Configuración para utilizar Docker de forma remota en el entorno de ejecución de CircleCI.
+      - setup_remote_docker:
+          # Versión de Docker compatible; consulta la documentación de CircleCI para obtener las versiones admitidas.
+          version: 20.10.18
+
+      # Verifica y obtiene el código fuente del repositorio.
+      - checkout:
+          path: ~/project/
+
+      # Instalación de Node.js en la versión 16.13.
+      - node/install:
+          node-version: "16.13"
+
+      # Imprime la versión de Node.js instalada.
+      - run: node --version
+
+      # Instalación global de la interfaz de línea de comandos de Railway.
+      - run: npm i -g @railway/cli
+
+      # Construcción y ejecución del Dockerfile utilizando Railway.
+      - run:
+          name: Construir y ejecutar Dockerfile (ver https://docs.railway.app/deploy/dockerfiles)
+          command: |
+            cd house-prices-api && railway up --detach -s famed-board -e production
+
 # Filtro que se aplica solo a las etiquetas (tags) en los cambios de git
 tags_only: &tags_only
   filters:
