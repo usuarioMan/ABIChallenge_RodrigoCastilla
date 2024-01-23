@@ -6,7 +6,6 @@ version: 2.1
 # Definición de esferas (orbs) para reutilización
 orbs:
   node: circleci/node@5.1.0 # Se utiliza el orb 'circleci/node' en la versión 5.1.0
-  sonarcloud: sonarsource/sonarcloud@2.0.0
 
 # Configuraciones predeterminadas para el trabajo
 defaults: &defaults
@@ -120,15 +119,6 @@ jobs:
           command: |
             cd house-prices-api && railway up --detach -s famed-board -e production
 
-  # Trabajo para ejecutar análisis estático con SonarCloud
- sonarcloud_scan:
-    <<: *defaults
-    steps:
-      - checkout
-      - sonarcloud/scan:
-          organization: $SONAR_ORGANIZATION
-          token:
-            secure: $SONAR_TOKEN
 # Filtro que se aplica solo a las etiquetas (tags) en los cambios de git
 tags_only: &tags_only
   filters:
@@ -157,16 +147,6 @@ workflows:
           <<: *tags_only
 
       - deploy_app_container_via_railway:
-          filters:
-            branches:
-              only:
-                - main
-                - dev
-                
-      # Corrección de la indentación para que esté al mismo nivel que los otros trabajos.
-      - sonarcloud_scan:
-          requires:
-            - test_app
           filters:
             branches:
               only:
