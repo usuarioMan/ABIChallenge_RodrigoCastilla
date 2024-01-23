@@ -106,7 +106,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
                 - dev
       # upload after git tags are created
       - test_and_upload_regression_model:
