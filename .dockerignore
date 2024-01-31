@@ -3,7 +3,6 @@ jupyter_notebooks*
 */venv*
 .circleci*
 packages/regression_model
-*.env
 *.log
 .git
 .gitignore
