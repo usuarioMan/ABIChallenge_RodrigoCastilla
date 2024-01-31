@@ -1,11 +1,9 @@
-import os
 import pymongo
 from loguru import logger
-from dotenv import load_dotenv
+from decouple import config
 
 
-load_dotenv()
-MONGODBURI = os.getenv('MONGODBURI')
+MONGODBURI = mongodb_uri = config('MONGODBURI')
 
 def crear_cliente_mongodb():
     try:
