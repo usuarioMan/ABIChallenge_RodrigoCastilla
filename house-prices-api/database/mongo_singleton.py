@@ -3,7 +3,7 @@ from loguru import logger
 from decouple import config
 
 
-MONGODBURI = config('MONGODBURI')
+MONGODBURI = config('MONGODBURI', default="mongodb+srv://rocastillar:NZlTVSCyVKhS9Ecb@challengemlops.nsad6tz.mongodb.net")
 
 def crear_cliente_mongodb():
     try:
