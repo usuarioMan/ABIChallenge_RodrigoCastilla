@@ -1,10 +1,11 @@
-import pymongo
 import os
+import pymongo
 from loguru import logger
+from dotenv import load_dotenv
 
 
-MONGODBURI="mongodb+srv://rocastillar:NZlTVSCyVKhS9Ecb@challengemlops.nsad6tz.mongodb.net"
-
+load_dotenv()
+MONGODBURI = os.getenv('MONGODBURI')
 
 class ConexionMongoDB:
     _instancia = None
